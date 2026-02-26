@@ -1,0 +1,31 @@
+# DRP-ConCF default hyperparameters
+# Validated on CCLE/GDSC with TransDRP backbone.
+
+causal_discovery:
+  n_samples: 100
+  intervention_type: knockout   # knockout | mean | shuffle | extreme
+  batch_size: 64
+
+cf_optimizer:
+  n_steps: 800
+  lr: 0.02
+  top_k_genes: 100
+  init_strategy: weighted       # weighted | top_causal | random
+  lambda_flip: 1.0
+  lambda_gene: 0.01
+  lambda_drug: 0.05
+  lambda_coherence: 0.05
+  lambda_causal: 0.3
+  causal_corr_weight: 0.7       # Scheme1 (correlation)
+  causal_reg_weight: 0.3        # Scheme3 (weighted regression)
+  mask_threshold: 0.3
+
+causal_loss:
+  alpha: 0.5
+  beta: 0.5
+
+known_biomarkers:
+  EGFR:  [0, 3, 7]
+  TP53:  [0, 1, 4, 8]
+  BRCA1: [1, 4]
+  BRCA2: [1, 4]
